@@ -4,7 +4,7 @@
 %define		_sysconfdir	%(%{apxs} -q SYSCONFDIR)
 
 Summary:	Apache module: bandwidth limits per vhosts
-Summary(pl):	Modu³ do Apache: limity pasma per vhosty
+Summary(pl):	Modu³ do Apache: limity pasma dla poszczególnych vhostów
 Name:		apache-mod_%{mod_name}
 Version:	0.9.1
 Release:	0.1
@@ -33,10 +33,10 @@ virtualhost's transfer limit is exceeded, mod_cband will redirect all
 further requests to a location specified in the configuration file.
 
 %description -l pl
-mod_cband to modu³ maj±cy za zadanie ograniczanie zu¿ycia pasma przez
-u¿ytkowników i virtualhostów. Gdy okre¶lony limit zostanie
-przekroczony, mod_cband przekieruje wszelkie zapytania do strony
-wskazanej w pliku konfiguracyjnym.
+mod_cband to modu³ Apache'a 2 maj±cy za zadanie ograniczanie zu¿ycia
+pasma przez u¿ytkowników i hosty wirtualne. Gdy okre¶lony limit
+zostanie przekroczony, mod_cband przekieruje wszelkie zapytania do
+strony wskazanej w pliku konfiguracyjnym.
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
