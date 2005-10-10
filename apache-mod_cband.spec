@@ -6,14 +6,13 @@
 Summary:	Apache module: bandwidth limits per vhosts
 Summary(pl):	Modu³ do Apache: limity pasma dla poszczególnych vhostów
 Name:		apache-mod_%{mod_name}
-Version:	0.9.1
+Version:	0.9.5
 Release:	0.1
 License:	Apache
 Group:		Networking/Daemons
 Source0:	http://cband.linux.pl/download/mod_%{mod_name}-%{version}.tgz
-# Source0-md5:	8f00b72f194719ee99d52a6175a74dbb
+# Source0-md5:	cdf72cec7bab1cb6618ec292228a9832
 Source1:	%{name}.conf
-Source2:	%{name}.conf.examples
 URL:		http://cband.linux.pl/
 BuildRequires:	apache-devel >= 2.0.0
 BuildRequires:	%{apxs}
@@ -40,16 +39,17 @@ strony wskazanej w pliku konfiguracyjnym.
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
-cp %{SOURCE2} .
 
 %build
-%{apxs} -c mod_%{mod_name}.c
+%configure \
+	--with-apxs=%{apxs}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_pkglibdir},%{_sysconfdir}/httpd.conf}
 
-install .libs/mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
+install src/.libs/mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf/97_mod_%{mod_name}.conf
 
 %clean
@@ -70,6 +70,6 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.examples
+%doc AUTHORS Changes INSTALL TODO  conf/*.example
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf/*mod_*.conf
 %attr(755,root,root) %{_pkglibdir}/*
