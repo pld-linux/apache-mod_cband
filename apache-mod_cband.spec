@@ -1,29 +1,26 @@
 %define		mod_name	cband
 %define 	apxs		/usr/sbin/apxs
-%define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
-%define		_sysconfdir	%(%{apxs} -q SYSCONFDIR)
-
 Summary:	Apache module: bandwidth limits per vhosts
 Summary(pl):	Modu³ do Apache: limity pasma dla poszczególnych vhostów
 Name:		apache-mod_%{mod_name}
 Version:	0.9.6.0
-Release:	1
+Release:	2
 License:	Apache
 Group:		Networking/Daemons
 Source0:	http://cband.linux.pl/download/mod-%{mod_name}-%{version}.tgz
 # Source0-md5:	6df461ef7cc61c5133a0d69deefe1902
 Source1:	%{name}.conf
 URL:		http://cband.linux.pl/
-BuildRequires:	apache-devel >= 2.0.0
 BuildRequires:	%{apxs}
-Requires(post,preun):	%{apxs}
-Requires(post,preun):	grep
-Requires(preun):	fileutils
+BuildRequires:	apache-devel >= 2.0.0
+Requires:	apache(modules-api) = %apache_modules_api
 Requires:	apache >= 2.0.0
 Requires:	crondaemon
 Requires:	procps
-Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_pkglibdir	%(%{apxs} -q LIBEXECDIR 2>/dev/null)
+%define		_sysconfdir	%(%{apxs} -q SYSCONFDIR 2>/dev/null)
 
 %description
 mod_cband is an Apache 2 module provided to solve the problem of
@@ -56,15 +53,14 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf/97_mod_%{mod_name}.c
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/apache ]; then
-	/etc/rc.d/init.d/apache restart 1>&2
+if [ -f /var/lock/subsys/httpd ]; then
+	/etc/rc.d/init.d/httpd restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-	umask 027
-	if [ -f /var/lock/subsys/apache ]; then
-		/etc/rc.d/init.d/apache restart 1>&2
+	if [ -f /var/lock/subsys/httpd ]; then
+		/etc/rc.d/init.d/httpd restart 1>&2
 	fi
 fi
 
