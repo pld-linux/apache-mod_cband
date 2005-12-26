@@ -14,7 +14,6 @@ URL:		http://cband.linux.pl/
 BuildRequires:	%{apxs}
 BuildRequires:	apache-devel >= 2.0.0
 Requires:	apache(modules-api) = %apache_modules_api
-Requires:	apache >= 2.0.0
 Requires:	crondaemon
 Requires:	procps
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
