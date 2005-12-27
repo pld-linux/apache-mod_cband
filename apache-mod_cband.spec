@@ -67,4 +67,4 @@ fi
 %defattr(644,root,root,755)
 %doc AUTHORS Changes INSTALL TODO  conf/*.example
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf/*mod_*.conf
-%attr(755,root,root) %{_pkglibdir}/*
+%attr(755,root,root) %{_pkglibdir}/*.so
