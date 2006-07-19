@@ -3,12 +3,12 @@
 Summary:	Apache module: bandwidth limits per vhosts
 Summary(pl):	Modu³ do Apache: limity pasma dla poszczególnych vhostów
 Name:		apache-mod_%{mod_name}
-Version:	0.9.7.2
+Version:	0.9.7.4
 Release:	1
 License:	Apache
 Group:		Networking/Daemons
 Source0:	http://cband.linux.pl/download/mod-%{mod_name}-%{version}.tgz
-# Source0-md5:	a359c60cf7f29f79dbacc0b184c2ee14
+# Source0-md5:	ff635d7b55bf7ca648d319247dfb45e3
 Source1:	%{name}.conf
 URL:		http://cband.linux.pl/
 BuildRequires:	%{apxs}
@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %service -q httpd restart
 
-%preun
+%postun
 if [ "$1" = "0" ]; then
 	%service -q httpd restart
 fi
