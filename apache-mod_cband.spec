@@ -1,7 +1,7 @@
 %define		mod_name	cband
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: bandwidth limits per vhosts
-Summary(pl.UTF-8):   Moduł do Apache: limity pasma dla poszczególnych vhostów
+Summary(pl.UTF-8):	Moduł do Apache: limity pasma dla poszczególnych vhostów
 Name:		apache-mod_%{mod_name}
 Version:	0.9.7.5
 Release:	1
