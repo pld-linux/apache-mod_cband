@@ -1,7 +1,7 @@
 %define		mod_name	cband
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: bandwidth limits per vhosts
-Summary(pl):	Modu≥ do Apache: limity pasma dla poszczegÛlnych vhostÛw
+Summary(pl.UTF-8):   Modu≈Ç do Apache: limity pasma dla poszczeg√≥lnych vhost√≥w
 Name:		apache-mod_%{mod_name}
 Version:	0.9.7.5
 Release:	1
@@ -28,9 +28,9 @@ limiting users' and virtualhosts' bandwidth usage. When the configured
 virtualhost's transfer limit is exceeded, mod_cband will redirect all
 further requests to a location specified in the configuration file.
 
-%description -l pl
-mod_cband to modu≥ Apache'a 2 maj±cy za zadanie ograniczanie zuøycia
-pasma przez uøytkownikÛw i hosty wirtualne. Gdy okre∂lony limit
+%description -l pl.UTF-8
+mod_cband to modu≈Ç Apache'a 2 majƒÖcy za zadanie ograniczanie zu≈ºycia
+pasma przez u≈ºytkownik√≥w i hosty wirtualne. Gdy okre≈õlony limit
 zostanie przekroczony, mod_cband przekieruje wszelkie zapytania do
 strony wskazanej w pliku konfiguracyjnym.
 
