@@ -11,7 +11,7 @@ Source0:	http://cband.linux.pl/download/mod-%{mod_name}-%{version}.tgz
 # Source0-md5:	5c5d65dc9abe6cdc6931b6dd33be5018
 Source1:	%{name}.conf
 URL:		http://cband.linux.pl/
-BuildRequires:	%{apxs}
+BuildRequires:	apache-apxs >= 2.0
 BuildRequires:	apache-devel >= 2.0.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	apache(modules-api) = %apache_modules_api
