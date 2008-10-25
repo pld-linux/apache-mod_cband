@@ -6,7 +6,7 @@ Name:		apache-mod_%{mod_name}
 Version:	0.9.7.5
 Release:	2
 License:	Apache
-Group:		Networking/Daemons
+Group:		Networking/Daemons/HTTP
 Source0:	http://cband.linux.pl/download/mod-%{mod_name}-%{version}.tgz
 # Source0-md5:	5c5d65dc9abe6cdc6931b6dd33be5018
 Source1:	%{name}.conf
